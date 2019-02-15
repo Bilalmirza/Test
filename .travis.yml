@@ -5,5 +5,9 @@ matrix:
     - os: osx
       env: BUILD_TARGET=mac_cmake
       language: cpp
-      osx_image: xcode9.3
+      osx_image: Xcode
       sudo: required
+script:
+- tools/travis-scripts/run-script.sh
+before_install:
+- tools/travis-scripts/before-install.sh
