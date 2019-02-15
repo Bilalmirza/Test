@@ -40,10 +40,10 @@ function build_linux()
 function build_mac()
 {
     NUM_OF_CORES=`getconf _NPROCESSORS_ONLN`
-
-    xcodebuild -project $COCOS2DX_ROOT/build/cocos2d_tests.xcodeproj -scheme "build all tests Mac" -jobs $NUM_OF_CORES -arch x86_64 build | xcpretty
+    cd /Users/apple/Testing/travis-test/proj.ios_mac
+    xcodebuild -project travis-test.xcodeproj -scheme "travis-test-desktop" -jobs $NUM_OF_CORES -arch x86_64 build | xcpretty
     ##xcpretty has a bug, some xcodebuid fails return value would be treated as 0.
-    xcodebuild -project $COCOS2DX_ROOT/build/cocos2d_tests.xcodeproj -scheme "build all tests Mac" -jobs $NUM_OF_CORES -arch x86_64 build
+    xcodebuild -project travis-test.xcodeproj -scheme "travis-test-desktop" -jobs $NUM_OF_CORES -arch x86_64 build
 }
 
 function build_ios()
