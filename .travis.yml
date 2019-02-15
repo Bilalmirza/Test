@@ -7,3 +7,7 @@ matrix:
       language: cpp
       osx_image: xcode10.1
       sudo: required
+script:
+- tools/travis-scripts/run-script.sh
+before_install:
+- tools/travis-scripts/before-install.sh
