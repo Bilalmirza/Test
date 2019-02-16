@@ -24,4 +24,5 @@ before_install:
   - printenv
 script:
   - cocos compile -p mac -m release
+  - y
   
