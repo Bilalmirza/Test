@@ -15,7 +15,7 @@ before_install:
   - cd ./cocos2d-x
   - python download-deps.py -r yes
   - git submodule update --init
-  - setup.py
+  - python setup.py
   - echo ''
   - echo ''
   - echo ''
