@@ -22,7 +22,6 @@ before_install:
   - cd ..
   - echo `pwd`
   - printenv
-  - cocos -v
 script:
   - cocos compile -p mac -m release
   
