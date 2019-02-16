@@ -11,12 +11,13 @@ git:
   submodules: false
 
 before_install:
+  - yes '' | sudo add-apt-repository ppa:nginx/stable
   - git clone http://github.com/cocos2d/cocos2d-x.git
   - cd ./cocos2d-x
   - python download-deps.py -r yes
   - git submodule update --init
   - python setup.py
-  - echo ''
+  - yes '' | sudo add-apt-repository ppa:nginx/stable
   - echo ''
   - echo ''
   - cd ..
