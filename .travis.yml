@@ -25,7 +25,5 @@ before_install:
 script:
   - cocos --agreement y
   - cocos compile -p mac -m release -o output
-after_success:
-  -export OUTPUTDIR="$PWD/output/"
 
   
