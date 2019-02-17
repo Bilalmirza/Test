@@ -25,11 +25,11 @@ before_install:
 script:
   - cocos --agreement y
   - cocos compile -p mac -m release -o output
-
-after_success:
   - cd output
   - zip -r travis.zip Test-desktop.app
   - export OUTPUTDIR=$PWD
   - export HOCKEY_APP_ID=36131caa01d742e4bcf77917004df486
   - export HOCKEY_APP_TOKEN=598504c3bbb54916a6bb4e62c34ce683
   - printenv
+  - curl -F "status=2" -F "notify=1" -F "notes=Some new features and fixed bugs." -F "notes_type=0" -F "ipa=@travis.zip" -H "X-HockeyAppToken: $HOCKEY_APP_TOKEN" https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_TOKEN/app_versions/upload
+
