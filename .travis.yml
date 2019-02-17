@@ -32,12 +32,12 @@ after_success:
   -HOCKEY_APP_ID=36131caa01d742e4bcf77917004df486
   -HOCKEY_APP_TOKEN=2ccf0f45dd21ca95365f8e065ba06e16
   -curl https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ID/app_versions \
-  -F status="2" \
-  -F notify="0" \
-  -F notes="$RELEASE_NOTES" \
-  -F notes_type="0" \
-  -F tags="production" \
-  -F ipa="@$OUTPUTDIR/$APP_NAME.app" \
-  -F dsym="@$OUTPUTDIR/$APP_NAME.app.dSYM.zip" \
+  -F status="2" 
+  -F notify="0" 
+  -F notes="$RELEASE_NOTES"
+  -F notes_type="0" 
+  -F tags="production" 
+  -F ipa="@$OUTPUTDIR/$APP_NAME.app" 
+  -F dsym="@$OUTPUTDIR/$APP_NAME.app.dSYM.zip" 
   -H "X-HockeyAppToken: $HOCKEY_APP_TOKEN"
   
