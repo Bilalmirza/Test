@@ -22,11 +22,11 @@ before_install:
   - cd ..
   - echo `pwd`
   - printenv
-script:
-  - cocos --agreement y
-  - cocos compile -p mac -m release -o output
+#script:
+ # - cocos --agreement y
+ # - cocos compile -p mac -m release -o output
 
- after_success:
-  - export OUTPUTDIR="$PWD/output/"
+ #after_success:
+  #- export OUTPUTDIR="$PWD/output/"
 
   
