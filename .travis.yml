@@ -11,17 +11,18 @@ git:
   submodules: false
 
 before_install:
-  - git clone http://github.com/cocos2d/cocos2d-x.git
-  - cd ./cocos2d-x
-  - python download-deps.py -r yes
-  - git submodule update --init
-  - export COCOS_CONSOLE_ROOT=`pwd`/tools/cocos2d-console/bin
-  - export PATH=$PATH:$COCOS_CONSOLE_ROOT
-  - export COCOS_TEMPLATES_ROOT=`pwd`/templates
-  - export PATH=$PATH:$COCOS_TEMPLATES_ROOT
-  - cd ..
-  - echo `pwd`
-  - printenv
+  #- git clone http://github.com/cocos2d/cocos2d-x.git
+  #- cd ./cocos2d-x
+  #- python download-deps.py -r yes
+  #- git submodule update --init
+  #- export COCOS_CONSOLE_ROOT=`pwd`/tools/cocos2d-console/bin
+  #- export PATH=$PATH:$COCOS_CONSOLE_ROOT
+  #- export COCOS_TEMPLATES_ROOT=`pwd`/templates
+  #- export PATH=$PATH:$COCOS_TEMPLATES_ROOT
+  #- cd ..
+  #- echo `pwd`
+  #- printenv
+  -xcodebuild -project /Users/travis/build/Bilalmirza/Test/proj.ios_mac/travis-test.xcodeproj -configuration Release -target "travis-test-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/output" | xcpretty
 script:
   - cocos --agreement y
   - cocos compile -p mac -m release -o output
