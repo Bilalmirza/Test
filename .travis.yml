@@ -22,9 +22,9 @@ before_install:
   #- cd ..
   #- echo `pwd`
   #- printenv
-  #  - xcodebuild -project /Users/travis/build/Bilalmirza/Test/proj.ios_mac/travis-test.xcodeproj -configuration Release -target "travis-test-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/output" | xcpretty
-install:
-- sudo -E sh ./install.sh
+   - xcodebuild -project /Users/travis/build/Bilalmirza/Test/proj.ios_mac/travis-test.xcodeproj -configuration Release -target "travis-test-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/output" | xcpretty
+#install:
+#- sudo -E sh ./install.sh
 
 script:
   #- cocos --agreement y
