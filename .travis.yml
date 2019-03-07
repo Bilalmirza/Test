@@ -2,13 +2,13 @@ matrix:
   include:
 
     # mac_cmake
-    - os: osx
-      env: BUILD_TARGET=mac_cmake
-      language: cpp
-      sudo: required
-    - os: windows
-      env: CMAKE_PATH="/c/Program Files/CMake/bin"
-      language: cpp
+    #- os: osx
+      #env: BUILD_TARGET=mac_cmake
+      #language: cpp
+     # sudo: required
+    #- os: windows
+     # env: CMAKE_PATH="/c/Program Files/CMake/bin"
+    #  language: cpp
     - os: linux
       env: BUILD_TARGET=linux
       language: cpp
@@ -20,10 +20,13 @@ git:
 script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export PATH=$CMAKE_PATH:$PATH  ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then 
-     echo -e "y" | bash /home/travis/build/Bilalmirza/Test/cocos2d/build/install-deps-linux.sh
+     echo -e "y" | bash /home/travis/build/Bilalmirza/Test/cocos2d/build/install-deps-linux.sh;
+     sudo apt-get update;
+     sudo apt-get install ninja-build;
+     ninja --version
     ;fi
   - mkdir build && cd build
-  - cmake ..
+  - cmake .. -DCMAKE_BUILD_TYPE=Release
   #- echo "$(cat /home/travis/build/Bilalmirza/Test/build/CMakeFiles/CMakeOutput.log)"
   - cmake --build .
  # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
