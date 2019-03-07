@@ -10,7 +10,9 @@ matrix:
     - os: windows
       env: CMAKE_PATH="/c/Program Files/CMake/bin"
       language: cpp
-        
+    - os: linux
+      env: BUILD_TARGET=linux
+      language: cpp
 
 git:
   submodules: false
@@ -20,7 +22,7 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export PATH=$CMAKE_PATH:$PATH  ; fi
   - mkdir build && cd build
   - cmake ..
-  - make
+  - cmake --build .
  # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
  #   xcodebuild -project /Users/travis/build/Bilalmirza/Test/proj.ios_mac/travis-test.xcodeproj -configuration Release -target "travis-test-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/bin" | xcpretty 
  #   ; fi
