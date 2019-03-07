@@ -1,56 +1,21 @@
-#! /bin/sh
+set -e
 
-# NOTE the command args below make the assumption that your Unity project folder is
-#  a subdirectory of the repo root directory, e.g. for this repo "unity-ci-test" 
-#  the project folder is "UnityProject". If this is not true then adjust the 
-#  -projectPath argument to point to the right location.
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+COCOS2DX_ROOT="$DIR"/../..
+CPU_CORES=4
 
-## Run the editor unit tests
-echo "Running editor unit tests for ${UNITYCI_PROJECT_NAME}"
-/Applications/Unity/Unity.app/Contents/MacOS/Unity \
-	-batchmode \
-	-nographics \
-	-silent-crashes \
-	-logFile $(pwd)/unity.log \
-	-projectPath "$(pwd)/${UNITYCI_PROJECT_NAME}" \
-	-runEditorTests \
-	-editorTestsResultFile $(pwd)/test.xml \
-	-quit
+function build_mac_cmake()
+{
+NUM_OF_CORES=`getconf _NPROCESSORS_ONLN`
 
-rc0=$?
-echo "Unit test logs"
-cat $(pwd)/test.xml
-# exit if tests failed
-if [ $rc0 -ne 0 ]; then { echo "Failed unit tests"; exit $rc0; } fi
+# pushd $COCOS2DX_ROOT
+# python -u tools/cocos2d-console/bin/cocos.py --agreement n new -l cpp -p my.pack.qqqq cocos_new_test
+# popd
+# cd $COCOS2DX_ROOT/cocos_new_test
+cd /Users/apple/Testing/travis-test/proj.ios_mac
 
-## Make the builds
-# Recall from install.sh that a separate module was needed for Windows build support
-echo "Attempting build of ${UNITYCI_PROJECT_NAME} for Windows"
-/Applications/Unity/Unity.app/Contents/MacOS/Unity \
-	-batchmode \
-	-nographics \
-	-silent-crashes \
-	-logFile $(pwd)/unity.log \
-	-projectPath "$(pwd)/${UNITYCI_PROJECT_NAME}" \
-	-buildWindowsPlayer "$(pwd)/Build/windows/${UNITYCI_PROJECT_NAME}.exe" \
-	-quit
-
-rc1=$?
-echo "Build logs (Windows)"
-cat $(pwd)/unity.log
-
-echo "Attempting build of ${UNITYCI_PROJECT_NAME} for OSX"
-/Applications/Unity/Unity.app/Contents/MacOS/Unity \
-	-batchmode \
-	-nographics \
-	-silent-crashes \
-	-logFile $(pwd)/unity.log \
-	-projectPath "$(pwd)/${UNITYCI_PROJECT_NAME}" \
-	-buildOSXUniversalPlayer "$(pwd)/Build/osx/${UNITYCI_PROJECT_NAME}.app" \
-	-quit
-
-rc2=$?
-echo "Build logs (OSX)"
-cat $(pwd)/unity.log
-
-exit $(($rc1|$rc2))
+xcodebuild -project Cocos2d-x.xcodeproj -alltargets -jobs $NUM_OF_CORES build  | xcpretty
+#the following commands must not be removed
+xcodebuild -project Cocos2d-x.xcodeproj -alltargets -jobs $NUM_OF_CORES build
+exit 0
+}

@@ -1,21 +1,22 @@
 #! /bin/sh
+set -e
 
-# Download Unity3D installer into the container
-#  The below link will need to change depending on the version, this one is for 5.5.1
-#  Refer to https://unity3d.com/get-unity/download/archive and find the link pointed to by Mac "Unity Editor"
-echo 'Downloading Unity 5.5.1 pkg:'
-curl --retry 5 -o Unity.pkg http://netstorage.unity3d.com/unity/88d00a7498cd/MacEditorInstaller/Unity-5.5.1f1.pkg
-if [ $? -ne 0 ]; then { echo "Download failed"; exit $?; } fi
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+COCOS2DX_ROOT="$DIR"/../..
+CPU_CORES=4
 
-# In Unity 5 they split up build platform support into modules which are installed separately
-# By default, only Mac OSX support is included in the original editor package; Windows, Linux, iOS, Android, and others are separate
-# In this example we download Windows support. Refer to http://unity.grimdork.net/ to see what form the URLs should take
-echo 'Downloading Unity 5.5.1 Windows Build Support pkg:'
-curl --retry 5 -o Unity_win.pkg http://netstorage.unity3d.com/unity/88d00a7498cd/MacEditorTargetInstaller/UnitySetup-Windows-Support-for-Editor-5.5.1f1.pkg
-if [ $? -ne 0 ]; then { echo "Download failed"; exit $?; } fi
+function build_mac_cmake()
+{
+NUM_OF_CORES=`getconf _NPROCESSORS_ONLN`
 
-# Run installer(s)
-echo 'Installing Unity.pkg'
-sudo installer -dumplog -package Unity.pkg -target /
-echo 'Installing Unity_win.pkg'
-sudo installer -dumplog -package Unity_win.pkg -target /
+# pushd $COCOS2DX_ROOT
+# python -u tools/cocos2d-console/bin/cocos.py --agreement n new -l cpp -p my.pack.qqqq cocos_new_test
+# popd
+# cd $COCOS2DX_ROOT/cocos_new_test
+cd /Users/apple/Testing/travis-test/proj.ios_mac
+
+xcodebuild -project test.xcodeproj -alltargets -jobs -scheme "test-desktop" $NUM_OF_CORES build  | xcpretty
+#the following commands must not be removed
+xcodebuild -project test.xcodeproj -alltargets -jobs $NUM_OF_CORES build
+exit 0
+}
