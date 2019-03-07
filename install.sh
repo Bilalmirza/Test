@@ -1,9 +1,4 @@
 #! /bin/sh
-set -e
-
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-COCOS2DX_ROOT="$DIR"/../..
-CPU_CORES=4
 
 function build_mac_cmake()
 {
