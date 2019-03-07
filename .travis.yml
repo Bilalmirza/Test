@@ -8,8 +8,9 @@ matrix:
      # osx_image: Xcode
      # sudo: required
     - os: windows
+      language: cpp
       env:
-        - CMAKE_PATH="/c/Program Files/CMake/bin"
+        - CMAKE_PATH="/c/Program Files/CMake/bin"      
       script: 
         - export PATH=$CMAKE_PATH:$PATH
         - mkdir build && cd build
