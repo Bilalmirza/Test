@@ -20,7 +20,7 @@ git:
  submodules: false
 
 before_install:
-  - install.sh
+  - /Users/travis/build/Bilalmirza/Test/install.sh
 
 #before_install:
   #- git clone http://github.com/cocos2d/cocos2d-x.git
