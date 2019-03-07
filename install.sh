@@ -7,16 +7,6 @@ CPU_CORES=4
 
 function build_mac_cmake()
 {
-NUM_OF_CORES=`getconf _NPROCESSORS_ONLN`
-
-# pushd $COCOS2DX_ROOT
-# python -u tools/cocos2d-console/bin/cocos.py --agreement n new -l cpp -p my.pack.qqqq cocos_new_test
-# popd
-# cd $COCOS2DX_ROOT/cocos_new_test
-cd /Users/apple/Testing/travis-test/proj.ios_mac
-
-xcodebuild -project test.xcodeproj -alltargets -jobs -scheme "test-desktop" $NUM_OF_CORES build  | xcpretty
-#the following commands must not be removed
-xcodebuild -project test.xcodeproj -alltargets -jobs $NUM_OF_CORES build
+xcodebuild -project /Users/travis/build/Bilalmirza/Test/proj.ios_mac/travis-test.xcodeproj -configuration Release -target "travis-test-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/output" | xcpretty
 exit 0
 }
