@@ -7,10 +7,10 @@ matrix:
       language: cpp
       osx_image: Xcode
       sudo: required
-git:
-  submodules: false
+#git:
+ # submodules: false
 
-before_install:
+#before_install:
   #- git clone http://github.com/cocos2d/cocos2d-x.git
   #- cd ./cocos2d-x
   #- python download-deps.py -r yes
@@ -27,7 +27,7 @@ before_install:
 #install:
 #- sudo -E sh ./install.sh
 
-script:
+#script:
   #- cocos --agreement y
   #- cocos compile -p mac -m release -o output
   #- cd output
