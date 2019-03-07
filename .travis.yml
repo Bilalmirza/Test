@@ -18,8 +18,7 @@ matrix:
     #     - cmake --build . 
 git:
  submodules: false
-
-before_install:
+script:
   - /Users/travis/build/Bilalmirza/Test/install.sh
 
 #before_install:
