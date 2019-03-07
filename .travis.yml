@@ -19,9 +19,6 @@ git:
  
 script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export PATH=$CMAKE_PATH:$PATH  ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then 
-
-  ; fi
   - mkdir build && cd build
   - cmake ..
   - cmake --build .
