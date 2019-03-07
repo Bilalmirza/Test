@@ -7,15 +7,6 @@ matrix:
      language: cpp
      osx_image: Xcode
      sudo: required
-    # - os: windows
-    #   language: cpp
-    #   env:
-    #     - CMAKE_PATH="/c/Program Files/CMake/bin"      
-    #   script: 
-    #     - export PATH=$CMAKE_PATH:$PATH
-    #     - mkdir build && cd build
-    #     - cmake .. 
-    #     - cmake --build . 
 git:
  submodules: false
 script:
