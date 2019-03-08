@@ -2,13 +2,13 @@ matrix:
   include:
 
     # mac_cmake
-    #- os: osx
-      #env: BUILD_TARGET=mac_cmake
-      #language: cpp
-     # sudo: required
-    #- os: windows
-     # env: CMAKE_PATH="/c/Program Files/CMake/bin"
-    #  language: cpp
+    - os: osx
+      env: BUILD_TARGET=mac_cmake
+      language: cpp
+      sudo: required
+    - os: windows
+      env: CMAKE_PATH="/c/Program Files/CMake/bin"
+      language: cpp
     - os: linux
       dist: xenial
       env: 
