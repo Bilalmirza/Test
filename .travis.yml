@@ -23,6 +23,9 @@ git:
   submodules: false
   
 before_install:
+  - export BITBUCKET_USER_NAME=Bilalmirza
+  - export BITBUCKET_USER_PASSWORD=aq95XJzDD6NRAnx28uDX
+  - echo -e "machine bitbucket.org\n  login $BITBUCKET_USER_NAME\n  password $BITBUCKET_USER_PASSWORD" >~/.netrc
 #  - echo -e "machine bitbucket.org\n  login Bilalmirza\n  password aq95XJzDD6NRAnx28uDX" >~/.netrc
   - git submodule update --init --recursive
 script:
