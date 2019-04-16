@@ -22,8 +22,8 @@ matrix:
 git:
   submodules: false
   
- before_install:
-  - echo -e "machine bitbucket.org\n  login Bilalmirza\n  password aq95XJzDD6NRAnx28uDX" >~/.netrc
+before_install:
+#  - echo -e "machine bitbucket.org\n  login Bilalmirza\n  password aq95XJzDD6NRAnx28uDX" >~/.netrc
   - git submodule update --init --recursive
 script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export PATH=$CMAKE_PATH:$PATH  ; fi
