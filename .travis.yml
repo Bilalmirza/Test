@@ -22,7 +22,9 @@ matrix:
 git:
   submodules: false
   
- 
+ before_install:
+  - echo -e "machine bitbucket.org\n  login Bilalmirza\n  password aq95XJzDD6NRAnx28uDX" >~/.netrc
+  - git submodule update --init --recursive
 script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export PATH=$CMAKE_PATH:$PATH  ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then 
@@ -31,6 +33,8 @@ script:
      sudo apt-get install ninja-build;
      ninja --version
     ;fi
+  - mkdir explottens && cd explottens
+  - git submodule add https://bitbucket.org/weRplay/explottens
   - mkdir build && cd build
   - cmake ..
   #- echo "$(cat /home/travis/build/Bilalmirza/Test/build/CMakeFiles/CMakeOutput.log)"
