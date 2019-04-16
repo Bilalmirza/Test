@@ -46,7 +46,7 @@ script:
 ##  - cmake --build .
    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
     xcodebuild -project /Users/travis/build/Bilalmirza/Test/explottens/explottens/proj.ios_mac/Explottens.xcodeproj -configuration Release -target "explottens-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/bin" | xcpretty 
-    ; fi
+    ;fi
  # - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export PATH=$CMAKE_PATH:$PATH  ; fi
  # - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then mkdir build && cd build  ; fi
  # - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake ..  ; fi
