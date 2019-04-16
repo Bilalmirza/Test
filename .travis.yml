@@ -38,6 +38,7 @@ script:
     ;fi
   - mkdir explottens && cd explottens
   - git submodule add https://bitbucket.org/weRplay/explottens
+  - cd explottens
   - mkdir build && cd build
   - cmake ..
   #- echo "$(cat /home/travis/build/Bilalmirza/Test/build/CMakeFiles/CMakeOutput.log)"
