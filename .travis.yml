@@ -54,7 +54,7 @@ script:
   - zip -r explottens.zip explottens.app
   - export OUTPUTDIR=$PWD
   - export HOCKEY_APP_ID=36131caa01d742e4bcf77917004df486
-  - export HOCKEY_APP_TOKEN=598504c3bbb54916a6bb4e62c34ce683
+  - export HOCKEY_APP_TOKEN=78e4b791cd8e47e789b6d127f1c5a883
   - printenv
   - curl -F "status=2" -F "notify=1" -F "notes=Some new features and fixed bugs." -F "notes_type=0" -F "ipa=@explottens.zip" -H "X-HockeyAppToken:$HOCKEY_APP_TOKEN" https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ID/app_versions/upload
  
