@@ -2,10 +2,10 @@ matrix:
   include:
 
     # mac_cmake
-    - os: osx
-      env: BUILD_TARGET=mac_cmake
-      language: cpp
-      sudo: required
+#    - os: osx
+#      env: BUILD_TARGET=mac_cmake
+#      language: cpp
+#      sudo: required
     - os: windows
       env: CMAKE_PATH="/c/Program Files/CMake/bin"
       language: cpp
@@ -28,7 +28,12 @@ before_install:
 #  - echo -e "machine bitbucket.org\n  login $BITBUCKET_USER_NAME\n  password $BITBUCKET_USER_PASSWORD" >~/.netrc
 #  - git submodule update --init --recursive
 script:
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export PATH=$CMAKE_PATH:$PATH  ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then 
+    export PATH=$CMAKE_PATH:$PATH;
+    mkdir build && cd build;
+    cmake .. -DCMAKE_BUILD_TYPE=Release -T v140;
+    cmake —build . —config Release
+  ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then 
      echo -e "y" | bash /home/travis/build/Bilalmirza/Test/cocos2d/build/install-deps-linux.sh;
      sudo apt-get update;
@@ -36,8 +41,7 @@ script:
      ninja --version
     ;fi
  # - git submodule add https://bitbucket.org/weRplay/explottens
-  - mkdir build && cd build
-  - msbuild.exe
+
 #  - cmake ..
 #  - echo "$(cat /home/travis/build/Bilalmirza/Test/build/CMakeFiles/CMakeOutput.log)"
  #  - cmake --build .
