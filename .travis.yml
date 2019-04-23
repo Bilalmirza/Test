@@ -28,12 +28,10 @@ before_install:
 #  - echo -e "machine bitbucket.org\n  login $BITBUCKET_USER_NAME\n  password $BITBUCKET_USER_PASSWORD" >~/.netrc
 #  - git submodule update --init --recursive
 script:
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then 
-    export PATH=$CMAKE_PATH:$PATH;
-    mkdir build && cd build;
-    cmake .. -DCMAKE_BUILD_TYPE=Release -T v140;
-    cmake —build . —config Release
-  ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then  export PATH=$CMAKE_PATH:$PATH  ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then  mkdir build && cd build ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then  cmake .. -DCMAKE_BUILD_TYPE=Release -T v140  ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then  cmake —build . —config Release  ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then 
      echo -e "y" | bash /home/travis/build/Bilalmirza/Test/cocos2d/build/install-deps-linux.sh;
      sudo apt-get update;
