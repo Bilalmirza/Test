@@ -35,7 +35,7 @@ script:
      sudo apt-get install ninja-build;
      ninja --version
     ;fi
-  - git submodule add https://bitbucket.org/weRplay/explottens
+ # - git submodule add https://bitbucket.org/weRplay/explottens
   - mkdir build && cd build
   - msbuild.exe
 #  - cmake ..
