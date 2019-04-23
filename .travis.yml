@@ -25,9 +25,8 @@ git:
 before_install:
   - export BITBUCKET_USER_NAME=Bilalmirza
   - export BITBUCKET_USER_PASSWORD=aq95XJzDD6NRAnx28uDX
-  - echo -e "machine bitbucket.org\n  login $BITBUCKET_USER_NAME\n  password $BITBUCKET_USER_PASSWORD" >~/.netrc
-#  - echo -e "machine bitbucket.org\n  login Bilalmirza\n  password aq95XJzDD6NRAnx28uDX" >~/.netrc
-  - git submodule update --init --recursive
+#  - echo -e "machine bitbucket.org\n  login $BITBUCKET_USER_NAME\n  password $BITBUCKET_USER_PASSWORD" >~/.netrc
+#  - git submodule update --init --recursive
 script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export PATH=$CMAKE_PATH:$PATH  ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then 
@@ -38,23 +37,24 @@ script:
     ;fi
   - git submodule add https://bitbucket.org/weRplay/explottens
   - mkdir build && cd build
-  - xcodebuild -project /Users/travis/build/Bilalmirza/Test/explottens/explottens/proj.ios_mac/Explottens.xcodeproj -configuration Release -scheme "explottens-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/bin" | xcpretty 
+  - msbuild.exe
 #  - cmake ..
 #  - echo "$(cat /home/travis/build/Bilalmirza/Test/build/CMakeFiles/CMakeOutput.log)"
 #  - cmake --build .
- #  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
-#    xcodebuild -project /Users/travis/build/Bilalmirza/Test/explottens/explottens/proj.ios_mac/Explottens.xcodeproj -configuration Release -scheme "explottens-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/bin" | xcpretty 
-#    ;fi
+   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
+     xcodebuild -project /Users/travis/build/Bilalmirza/Test/explottens/explottens/proj.ios_mac/Explottens.xcodeproj -configuration Release -scheme "explottens-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/bin" | xcpretty 
+    ;fi
  # - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export PATH=$CMAKE_PATH:$PATH  ; fi
  # - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then mkdir build && cd build  ; fi
  # - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake ..  ; fi
  # - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake --build .  ; fi
  # - cd bin
-  - cd /Users/travis/build/Bilalmirza/Test/bin
-  - zip -r explottens.zip explottens.app
-  - export OUTPUTDIR=$PWD
-  - export HOCKEY_APP_ID=36131caa01d742e4bcf77917004df486
-  - export HOCKEY_APP_TOKEN=78e4b791cd8e47e789b6d127f1c5a883
-  - printenv
-  - curl -F "status=2" -F "notify=1" -F "notes=Some new features and fixed bugs." -F "notes_type=0" -F "ipa=@explottens.zip" -H "X-HockeyAppToken:$HOCKEY_APP_TOKEN" https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ID/app_versions/upload
+ 
+ 
+ # - cd /Users/travis/build/Bilalmirza/Test/bin
+ # - zip -r explottens.zip explottens.app
+ # - export OUTPUTDIR=$PWD
+ # - export HOCKEY_APP_ID=36131caa01d742e4bcf77917004df486
+ # - export HOCKEY_APP_TOKEN=78e4b791cd8e47e789b6d127f1c5a883
+ # - curl -F "status=2" -F "notify=1" -F "notes=Some new features and fixed bugs." -F "notes_type=0" -F "ipa=@explottens.zip" -H "X-HockeyAppToken:$HOCKEY_APP_TOKEN" https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ID/app_versions/upload
  
