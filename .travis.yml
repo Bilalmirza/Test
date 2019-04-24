@@ -35,6 +35,8 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo login Bilalmirza >> _netrc  ; fi 
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo password aq95XJzDD6NRAnx28uDX >> _netrc  ; fi 
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then type _netrc ; fi 
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then dir ; fi 
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then ls ; fi 
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then 
      echo -e "y" | bash /home/travis/build/Bilalmirza/Test/cocos2d/build/install-deps-linux.sh;
      sudo apt-get update;
