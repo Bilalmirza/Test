@@ -29,6 +29,8 @@ before_install:
 #  - echo -e "machine bitbucket.org\n  login Bilalmirza\n  password aq95XJzDD6NRAnx28uDX" >~/.netrc
   - git submodule update --init --recursive
 script:
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell.exe; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then Add-Type -A System.IO.Compression.FileSystem; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export PATH=$CMAKE_PATH:$PATH  ; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export HOME=$(pwd); fi 
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo "$HOME"; fi 
@@ -50,6 +52,8 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then xcodebuild -project /Users/travis/build/Bilalmirza/Test/explottens/explottens/proj.ios_mac/Explottens.xcodeproj -configuration Release -scheme "explottens-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/bin" | xcpretty ;fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake .. -DCMAKE_BUILD_TYPE=Release -T v140; fi 
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake --build . --config Release; fi 
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cd bin; fi 
+  -
 
 #  - cmake ..
 #  - echo "$(cat /home/travis/build/Bilalmirza/Test/build/CMakeFiles/CMakeOutput.log)"
@@ -65,8 +69,9 @@ script:
   - cd /Users/travis/build/Bilalmirza/Test/bin
   - zip -r explottens.zip explottens.app
   - export OUTPUTDIR=$PWD
-  - export HOCKEY_APP_ID=36131caa01d742e4bcf77917004df486
-  - export HOCKEY_APP_TOKEN=78e4b791cd8e47e789b6d127f1c5a883
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export HOCKEY_APP_ID=36131caa01d742e4bcf77917004df486 ;fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export HOCKEY_APP_ID=ee813b4a9cf842f093a6c9343c08ec8b ;fi
+  - export HOCKEY_APP_TOKEN=e7bdafb86203468e98d28fbeb05ef943
   - printenv
   - curl -F "status=2" -F "notify=1" -F "notes=Some new features and fixed bugs." -F "notes_type=0" -F "ipa=@explottens.zip" -H "X-HockeyAppToken:$HOCKEY_APP_TOKEN" https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ID/app_versions/upload
  
