@@ -46,7 +46,10 @@ script:
     ;fi
   - git submodule add --depth 1 -- https://bitbucket.org/weRplay/explottens
   - mkdir build && cd build
-  - xcodebuild -project /Users/travis/build/Bilalmirza/Test/explottens/explottens/proj.ios_mac/Explottens.xcodeproj -configuration Release -scheme "explottens-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/bin" | xcpretty 
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then xcodebuild -project /Users/travis/build/Bilalmirza/Test/explottens/explottens/proj.ios_mac/Explottens.xcodeproj -configuration Release -scheme "explottens-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/bin" | xcpretty ;fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake .. -DCMAKE_BUILD_TYPE=Release -T v140; fi 
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; cmake --build . --config Release; fi 
+
 #  - cmake ..
 #  - echo "$(cat /home/travis/build/Bilalmirza/Test/build/CMakeFiles/CMakeOutput.log)"
 #  - cmake --build .
