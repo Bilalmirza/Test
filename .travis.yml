@@ -36,7 +36,7 @@ script:
      sudo apt-get install ninja-build;
      ninja --version
     ;fi
-  - git submodule add https://bitbucket.org/weRplay/explottens
+  - git submodule add --depth 1 -- https://bitbucket.org/weRplay/explottens
   - mkdir build && cd build
   - xcodebuild -project /Users/travis/build/Bilalmirza/Test/explottens/explottens/proj.ios_mac/Explottens.xcodeproj -configuration Release -scheme "explottens-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/bin" | xcpretty 
 #  - cmake ..
