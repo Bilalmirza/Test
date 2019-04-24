@@ -27,7 +27,7 @@ before_install:
   - export BITBUCKET_USER_PASSWORD=aq95XJzDD6NRAnx28uDX
 #  - echo -e "machine bitbucket.org\n  login $BITBUCKET_USER_NAME\n  password $BITBUCKET_USER_PASSWORD" >~/.netrc
   script:
-  - git clone --depth 1 https://bitbucket.org/weRplay/explottens
+  - git add --depth 1 https://bitbucket.org/weRplay/explottens
   - cd explottens/explottens
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then  export PATH=$CMAKE_PATH:$PATH  ; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then  mkdir build && cd build ; fi
