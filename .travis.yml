@@ -29,8 +29,6 @@ before_install:
 #  - echo -e "machine bitbucket.org\n  login Bilalmirza\n  password aq95XJzDD6NRAnx28uDX" >~/.netrc
   - git submodule update --init --recursive
 script:
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell.exe; fi
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then Add-Type -A System.IO.Compression.FileSystem; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export PATH=$CMAKE_PATH:$PATH  ; fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export HOME=$(pwd); fi 
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo "$HOME"; fi 
@@ -53,7 +51,7 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake .. -DCMAKE_BUILD_TYPE=Release -T v140; fi 
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake --build . --config Release; fi 
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cd bin; fi 
-  -
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::ExtractToDirectory('Explottens', 'explottens.zip'); }"; fi 
 
 #  - cmake ..
 #  - echo "$(cat /home/travis/build/Bilalmirza/Test/build/CMakeFiles/CMakeOutput.log)"
@@ -66,8 +64,8 @@ script:
  # - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake ..  ; fi
  # - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake --build .  ; fi
  # - cd bin
-  - cd /Users/travis/build/Bilalmirza/Test/bin
-  - zip -r explottens.zip explottens.app
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd /Users/travis/build/Bilalmirza/Test/bin;fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip -r explottens.zip explottens.app;fi
   - export OUTPUTDIR=$PWD
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export HOCKEY_APP_ID=36131caa01d742e4bcf77917004df486 ;fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export HOCKEY_APP_ID=ee813b4a9cf842f093a6c9343c08ec8b ;fi
