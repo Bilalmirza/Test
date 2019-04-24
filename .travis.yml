@@ -26,17 +26,14 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export BITBUCKET_USER_NAME=Bilalmirza  ; fi 
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export BITBUCKET_USER_PASSWORD=aq95XJzDD6NRAnx28uDX  ; fi 
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo -e "machine bitbucket.org\n  login $BITBUCKET_USER_NAME\n  password $BITBUCKET_USER_PASSWORD" >~/.netrc  ; fi 
-
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then set HOME=%cd%  ; fi 
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo machine bitbucket.org > _netrc  ; fi 
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo login Bilalmirza >> _netrc  ; fi 
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo password aq95XJzDD6NRAnx28uDX >> _netrc  ; fi 
-
- 
 #  - echo -e "machine bitbucket.org\n  login Bilalmirza\n  password aq95XJzDD6NRAnx28uDX" >~/.netrc
   - git submodule update --init --recursive
 script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export PATH=$CMAKE_PATH:$PATH  ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then set HOME=%cd%  ; fi 
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo machine bitbucket.org > _netrc  ; fi 
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo login Bilalmirza >> _netrc  ; fi 
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo password aq95XJzDD6NRAnx28uDX >> _netrc  ; fi 
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then 
      echo -e "y" | bash /home/travis/build/Bilalmirza/Test/cocos2d/build/install-deps-linux.sh;
      sudo apt-get update;
