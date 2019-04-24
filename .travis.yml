@@ -49,7 +49,7 @@ script:
   - mkdir build && cd build
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then xcodebuild -project /Users/travis/build/Bilalmirza/Test/explottens/explottens/proj.ios_mac/Explottens.xcodeproj -configuration Release -scheme "explottens-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/bin" | xcpretty ;fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake .. -DCMAKE_BUILD_TYPE=Release -T v140; fi 
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake --build .; fi 
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake --build . --config Release; fi 
 
 #  - cmake ..
 #  - echo "$(cat /home/travis/build/Bilalmirza/Test/build/CMakeFiles/CMakeOutput.log)"
