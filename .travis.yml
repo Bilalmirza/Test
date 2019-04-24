@@ -2,10 +2,10 @@ matrix:
   include:
 
     # mac_cmake
- #   - os: osx
-#      env: BUILD_TARGET=mac_cmake
-#      language: cpp
-#      sudo: required
+    - os: osx
+      env: BUILD_TARGET=mac_cmake
+      language: cpp
+      sudo: required
     - os: windows
       env: CMAKE_PATH="/c/Program Files/CMake/bin"
       language: cpp
@@ -52,18 +52,6 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake --build . --config Release; fi 
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cd bin; fi 
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::CreateFromDirectory('Explottens', 'explottens.zip'); }"; fi 
-
-#  - cmake ..
-#  - echo "$(cat /home/travis/build/Bilalmirza/Test/build/CMakeFiles/CMakeOutput.log)"
-#  - cmake --build .
- #  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
-#    xcodebuild -project /Users/travis/build/Bilalmirza/Test/explottens/explottens/proj.ios_mac/Explottens.xcodeproj -configuration Release -scheme "explottens-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/bin" | xcpretty 
-#    ;fi
- # - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export PATH=$CMAKE_PATH:$PATH  ; fi
- # - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then mkdir build && cd build  ; fi
- # - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake ..  ; fi
- # - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake --build .  ; fi
- # - cd bin
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd /Users/travis/build/Bilalmirza/Test/bin;fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip -r explottens.zip explottens.app;fi
   - export OUTPUTDIR=$PWD
