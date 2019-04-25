@@ -55,8 +55,8 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd /Users/travis/build/Bilalmirza/Test/bin;fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip -r explottens.zip explottens.app;fi
   - export OUTPUTDIR=$PWD
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export HOCKEY_APP_ID=36131caa01d742e4bcf77917004df486 ;fi
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export HOCKEY_APP_ID=ee813b4a9cf842f093a6c9343c08ec8b ;fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export HOCKEY_APP_ID=36131caa01d742e4bcf77917004df486;fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export HOCKEY_APP_ID=bfedf0d2e3ff4048beb5ad6ad5e2ad55;fi
   - export HOCKEY_APP_TOKEN=e7bdafb86203468e98d28fbeb05ef943
   - printenv
   - curl -F "status=2" -F "notify=1" -F "notes=Some new features and fixed bugs." -F "notes_type=0" -F "ipa=@explottens.zip" -H "X-HockeyAppToken:$HOCKEY_APP_TOKEN" https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ID/app_versions/upload
