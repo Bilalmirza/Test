@@ -6,6 +6,7 @@ matrix:
       env: BUILD_TARGET=mac_cmake
       language: cpp
       sudo: required
+      osx_image: xcode10.2
     - os: windows
       env: CMAKE_PATH="/c/Program Files/CMake/bin"
       language: cpp
