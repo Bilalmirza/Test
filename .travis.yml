@@ -51,6 +51,11 @@ script:
   - git submodule add --depth 1 -- https://bitbucket.org/weRplay/explottens
   - cd explottens/explottens
   - mkdir build && cd build
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then 
+    ls;
+    cd ..;
+    ls
+  ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake ..; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake --build .; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then xcodebuild -project /Users/travis/build/Bilalmirza/Test/explottens/explottens/proj.ios_mac/Explottens.xcodeproj -configuration Release -scheme "explottens-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/bin" | xcpretty ;fi
