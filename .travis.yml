@@ -2,14 +2,14 @@ matrix:
   include:
 
     # mac_cmake
-    - os: osx
-      env: BUILD_TARGET=mac_cmake
-      language: cpp
-      sudo: required
-      osx_image: xcode10.2
-    - os: windows
-      env: CMAKE_PATH="/c/Program Files/CMake/bin"
-      language: cpp
+#    - os: osx
+#      env: BUILD_TARGET=mac_cmake
+#      language: cpp
+#      sudo: required
+#      osx_image: xcode10.2
+#    - os: windows
+#      env: CMAKE_PATH="/c/Program Files/CMake/bin"
+#      language: cpp
     - os: linux
       dist: xenial
       env: 
@@ -45,6 +45,7 @@ script:
      sudo apt-get update;
      sudo apt-get install ninja-build;
      ninja --version
+     sudo apt-get install libgtk-3-dev
     ;fi
   - git submodule add --depth 1 -- https://bitbucket.org/weRplay/explottens
   - cd explottens/Explottens
