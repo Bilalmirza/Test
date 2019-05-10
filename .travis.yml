@@ -10,15 +10,15 @@ matrix:
     - os: windows
       env: CMAKE_PATH="/c/Program Files/CMake/bin"
       language: cpp
-#   - os: linux
-#      dist: xenial
-#      env: 
-#       - BUILD_TARGET=linux 
-#        - GEN_BINDING_AND_COCOSFILE=true
-#        - secure: Xn48eX1TD6DAPcVPU+a+CD3b/BKGVCHk555zl8rZiLq4GH4rWSES23rKcY8uz/X9GizETWYQK2luNvph4/BA29XEZ7l+Q0V9AZwrahWPzCuDBgxSPAr4KlETGM9I3xEvRIKBeddko7JTFHZCcNsItPRA0CovndQzdKE6texm13A=
-#        - secure: M31OQaUIBV13aUMylPs2PieKThGs+ED0tj9SKbCKGKxwojl+N2ZhlS53D4Zqoj1ru/3P1X0pPeYvV0uVfM2dpEwRF4BmYVZQSrOKgjK1VfbcN5luWSeuAvq0LNGT99Ao02sKLbcHINiQ4axylPPgsY6+X/aoJNuKqBTQyaaVAo8=
-#        - secure: M5lyDs0qai15mWHzJdkh0WPfVJJmVZu6SWtYULxatukGPXVwoQvmEtYAwAW+iz6aM+tXksQ/mk6nW5L8UFbHm+n6yrsa5bZU9sGXjilPE8p8bLFYDmIbPRazU+E6pBP3J2CDoAm0XnWkiYQ8feTxKTo6ysLnHAEjyaHTw0+Q1GM=
-#      language: cpp
+   - os: linux
+      dist: xenial
+      env: 
+       - BUILD_TARGET=linux 
+        - GEN_BINDING_AND_COCOSFILE=true
+        - secure: Xn48eX1TD6DAPcVPU+a+CD3b/BKGVCHk555zl8rZiLq4GH4rWSES23rKcY8uz/X9GizETWYQK2luNvph4/BA29XEZ7l+Q0V9AZwrahWPzCuDBgxSPAr4KlETGM9I3xEvRIKBeddko7JTFHZCcNsItPRA0CovndQzdKE6texm13A=
+        - secure: M31OQaUIBV13aUMylPs2PieKThGs+ED0tj9SKbCKGKxwojl+N2ZhlS53D4Zqoj1ru/3P1X0pPeYvV0uVfM2dpEwRF4BmYVZQSrOKgjK1VfbcN5luWSeuAvq0LNGT99Ao02sKLbcHINiQ4axylPPgsY6+X/aoJNuKqBTQyaaVAo8=
+        - secure: M5lyDs0qai15mWHzJdkh0WPfVJJmVZu6SWtYULxatukGPXVwoQvmEtYAwAW+iz6aM+tXksQ/mk6nW5L8UFbHm+n6yrsa5bZU9sGXjilPE8p8bLFYDmIbPRazU+E6pBP3J2CDoAm0XnWkiYQ8feTxKTo6ysLnHAEjyaHTw0+Q1GM=
+      language: cpp
 
 git:
   submodules: false
@@ -48,6 +48,8 @@ script:
   - git submodule add --depth 1 -- https://bitbucket.org/weRplay/explottens
   - cd explottens/explottens
   - mkdir build && cd build
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake ..;fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake --build .;fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then xcodebuild -project /Users/travis/build/Bilalmirza/Test/explottens/explottens/proj.ios_mac/Explottens.xcodeproj -configuration Release -scheme "explottens-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/bin" | xcpretty ;fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake .. -DCMAKE_BUILD_TYPE=Release -T v140; fi 
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake --build . --config Release; fi 
