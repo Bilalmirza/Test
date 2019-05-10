@@ -41,14 +41,13 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo password aq95XJzDD6NRAnx28uDX>> _netrc  ; fi 
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cat _netrc; fi 
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then 
-     echo -e "y" | bash /home/travis/build/Bilalmirza/Test/cocos2d/build/install-deps-linux.sh;
+     echo -e "y" | bash /home/travis/build/Bilalmirza/Test/install-deps-linux.sh;
      sudo apt-get update;
      sudo apt-get install ninja-build;
      ninja --version
     ;fi
   - git submodule add --depth 1 -- https://bitbucket.org/weRplay/explottens
   - cd explottens/Explottens
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install libgtk-3-dev; fi
   - mkdir build && cd build
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake ..; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake --build .; fi
