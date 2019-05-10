@@ -45,11 +45,10 @@ script:
      sudo apt-get update;
      sudo apt-get install ninja-build;
      ninja --version
-     sudo apt-get install libgtk-3-dev
     ;fi
   - git submodule add --depth 1 -- https://bitbucket.org/weRplay/explottens
   - cd explottens/Explottens
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ls; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install libgtk-3-dev; fi
   - mkdir build && cd build
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake ..; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake --build .; fi
