@@ -46,7 +46,7 @@ script:
      sudo apt-get install ninja-build;
      ninja --version
     ;fi
-  - git submodule add --depth 1 -- https://bitbucket.org/weRplay/explottens
+  - git submodule add --depth 50 -- https://bitbucket.org/weRplay/explottens
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ls; fi
   - cd explottens/explottens
   - mkdir build && cd build
