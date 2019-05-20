@@ -64,7 +64,7 @@ script:
 
   - export HOCKEY_APP_TOKEN=e7bdafb86203468e98d28fbeb05ef943
   - printenv
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then curl -X PUT -F "status=2" -F "notify=1" -F "notes=Some new features and fixed bugs." -F "notes_type=0" -F "ipa=@explottens.zip" -H "X-HockeyAppToken:$HOCKEY_APP_TOKEN" https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ID/app_versions/1;fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then curl -F "status=2" -F "notify=1" -F "notes=Some new features and fixed bugs." -F "notes_type=0" -F "ipa=@explottens.zip" -H "X-HockeyAppToken:$HOCKEY_APP_TOKEN" https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ID/app_versions/upload;fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then curl -X PUT -F "status=2" -F "notify=1" -F "notes=Some new features and fixed bugs." -F "notes_type=0" -F "ipa=@explottens.zip" -H "X-HockeyAppToken:$HOCKEY_APP_TOKEN" https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ID/app_versions/2;fi
-   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then curl -X PUT -F "status=2" -F "notify=1" -F "notes=Some new features and fixed bugs." -F "notes_type=0" -F "ipa=@explottens.zip" -H "X-HockeyAppToken:$HOCKEY_APP_TOKEN" https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ID/app_versions/1;fi
 
