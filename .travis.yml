@@ -60,7 +60,7 @@ script:
   - export OUTPUTDIR=$PWD
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export HOCKEY_APP_ID=36131caa01d742e4bcf77917004df486;fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then export HOCKEY_APP_ID=bfedf0d2e3ff4048beb5ad6ad5e2ad55;fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export HOCKEY_APP_ID=bfedf0d2e3ff4048beb5ad6ad5e2ad55;fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export HOCKEY_APP_ID=b66407ecde2d463a8fea94eed1c15159;fi
 
   - export HOCKEY_APP_TOKEN=e7bdafb86203468e98d28fbeb05ef943
   - printenv
