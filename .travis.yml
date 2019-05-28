@@ -54,7 +54,8 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake .. -DCMAKE_BUILD_TYPE=Release -T v140; fi 
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake --build . --config Release; fi 
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cd bin; fi 
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::CreateFromDirectory('Explottens', 'explottens.zip'); }"; fi 
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cd Explottens; fi 
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::CreateFromDirectory('Release', 'explottens.zip'); }"; fi 
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd /Users/travis/build/Bilalmirza/Test/bin;fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then zip -r explottens.zip explottens.app;fi
   - export OUTPUTDIR=$PWD
