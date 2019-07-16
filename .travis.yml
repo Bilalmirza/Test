@@ -50,7 +50,7 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake --build .; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cd bin/Debug; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then zip -r explottens Explottens; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then xcodebuild -project /Users/travis/build/Bilalmirza/Test/explottens/explottens/proj.ios_mac/Explottens.xcodeproj -configuration Release -scheme "explottens-desktop" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/bin" | xcpretty ;fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then xcodebuild -project /Users/travis/build/Bilalmirza/Test/explottens/explottens/proj.ios_mac/Explottens.xcodeproj -configuration Release -scheme "explottens-Mac" CONFIGURATION_BUILD_DIR="/Users/travis/build/Bilalmirza/Test/bin" | xcpretty ;fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake .. -DCMAKE_BUILD_TYPE=Release -T v140; fi 
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cmake --build . --config Release; fi 
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cd bin; fi 
