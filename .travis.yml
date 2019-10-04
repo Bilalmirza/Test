@@ -13,7 +13,7 @@ matrix:
     - os: linux
       dist: xenial
       env: 
-       - BUILD_TARGET=linux 
+        - BUILD_TARGET=linux 
         - GEN_BINDING_AND_COCOSFILE=true
         - secure: Xn48eX1TD6DAPcVPU+a+CD3b/BKGVCHk555zl8rZiLq4GH4rWSES23rKcY8uz/X9GizETWYQK2luNvph4/BA29XEZ7l+Q0V9AZwrahWPzCuDBgxSPAr4KlETGM9I3xEvRIKBeddko7JTFHZCcNsItPRA0CovndQzdKE6texm13A=
         - secure: M31OQaUIBV13aUMylPs2PieKThGs+ED0tj9SKbCKGKxwojl+N2ZhlS53D4Zqoj1ru/3P1X0pPeYvV0uVfM2dpEwRF4BmYVZQSrOKgjK1VfbcN5luWSeuAvq0LNGT99Ao02sKLbcHINiQ4axylPPgsY6+X/aoJNuKqBTQyaaVAo8=
