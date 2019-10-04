@@ -40,6 +40,7 @@ script:
      echo -e "y" | bash /home/travis/build/Bilalmirza/Test/install-deps-linux.sh;
      sudo apt-get update;
      sudo apt-get install ninja-build;
+     sudo apt-get install doxygen;
      ninja --version
     ;fi
   - git submodule add --depth 1 -- https://bitbucket.org/weRplay/explottens
