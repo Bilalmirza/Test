@@ -68,4 +68,14 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then curl -X PUT -F "status=2" -F "notify=1" -F "notes=Some new features and fixed bugs." -F "notes_type=0" -F "ipa=@explottens.zip" -H "X-HockeyAppToken:$HOCKEY_APP_TOKEN" https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ID/app_versions/1;fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then curl -F "status=2" -F "notify=1" -F "notes=Some new features and fixed bugs." -F "notes_type=0" -F "ipa=@explottens.zip" -H "X-HockeyAppToken:$HOCKEY_APP_TOKEN" https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ID/app_versions/upload;fi
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then curl -X PUT -F "status=2" -F "notify=1" -F "notes=Some new features and fixed bugs." -F "notes_type=0" -F "ipa=@explottens.zip" -H "X-HockeyAppToken:$HOCKEY_APP_TOKEN" https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ID/app_versions/2;fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then git clone https://github.com/andreafabrizi/Dropbox-Uploader.git;fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then ./dropbox_uploader.sh;fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then git clone https://github.com/andreafabrizi/Dropbox-Uploader.git;fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then ./Dropbox-Uploader/dropbox_uploader.sh upload explottens.zip explottens-win.zip;fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo "vp0TyqCJLF0AAAAAAAACLF4EpS8qwQa23nhKzYqhdow0ekBQ4j67HfdRHjDsf8ox";fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then echo "y";fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then ./Dropbox-Uploader/dropbox_uploader.sh upload explottens.zip explottens-win.zip;fi
+
+
+
 
