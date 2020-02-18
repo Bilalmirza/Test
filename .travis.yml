@@ -43,7 +43,9 @@ script:
      ninja --version
     ;fi
   - git submodule add --depth 1 -- https://bitbucket.org/weRplay/explottens
-  - cd explottens/Explottens
+  - cd explottens
+  - git submodule update --init --recursive --progress
+  - cd Explottens
   - mkdir build && cd build
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake ..; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cmake --build .; fi
