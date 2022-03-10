@@ -27,7 +27,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Build & Upload
         run: |
-          git clone https://bilalmirza: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@github.com/Werplay/EXPLOTTENS
+          git clone https://${TOKEN}:x-oauth-basic@github.com/MyUser/MyRepo.git
+          git clone https://{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$}:x-oauth-basic@github.com/Werplay/EXPLOTTENS
           cd Explottens
           git submodule update --init --recursive --progress
           cd Explottens
